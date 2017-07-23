@@ -1,6 +1,6 @@
 [submodule "public"]
 	path = public
-	url = gh:bmon/bmon.github.io.git
+	url = gh:bmon/bmon.github.io
 [submodule "themes/hemingway2"]
 	path = themes/hemingway2
-	url = gh:beli3ver/hemingway2
+	url = gh:bmon/hemingway2
