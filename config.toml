@@ -1,0 +1,25 @@
+baseurl = "https://brendanr.net"
+languageCode = "en"
+title = "brendanr.net"
+theme = "hemingway2"
+copyright = "&copy; <a href=\"https://github.com/bmon\">Brendan Roy</a> 2017"
+googleAnalytics = ""
+description = "Full Stack Developer"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+
+[params.highlight]
+style = "github"
+languages = ["go", "dockerfile"]
+
+[[params.social]]
+url = "https://github.com/bmon"
+fa_icon = "fa-github"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"
