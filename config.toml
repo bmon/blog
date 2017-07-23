@@ -1,6 +1,6 @@
 baseurl = "https://brendanr.net"
 languageCode = "en"
-title = "brendanr.net"
+title = "Brendan Roy"
 theme = "hemingway2"
 copyright = "&copy; <a href=\"https://github.com/bmon\">Brendan Roy</a> 2017"
 googleAnalytics = ""
@@ -21,5 +21,19 @@ url = "https://github.com/bmon"
 fa_icon = "fa-github"
 
 [[params.social]]
+url = "https://www.linkedin.com/in/brendan-roy/"
+fa_icon = "fa-linkedin"
+
+[[params.social]]
+url = "mailto:br3ndanr@gmail.com"
+fa_icon = "fa-envelope"
+
+[[params.social]]
 url = "/index.xml"
 fa_icon = "fa-rss"
+
+[[menu.main]]
+name = "Home"
+weight = -110
+identifier = "home"
+url = "/"

@@ -1,9 +1,51 @@
 $blue: #2077b2
 $primary: $blue
 $grey-dark: #42464c
-$family-sans-serif: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
+$family-sans-serif: "Noto Sans", sans-serif
 
 @import "node_modules/bulma/bulma"
+
+html
+  background-color: #eeeeee
+
+header.page-header
+  background-color: #cedbe8
+  box-shadow: 0px -2px 10px
+
+a
+  color: #5f5f5f
+
+nav.navbar
+  height: 90px
+  padding: 10px
+  background-color: transparent
+  h1
+    font-size: 1.5em
+    margin: 0px 10px
+  a:hover
+    background-color: transparent
+  .level-item
+    margin-left: 10px
+  .menu-item
+    margin: 5px
+
+.portrait-parent
+  height: 80px
+  width: 80px
+
+.my-photo
+  height: 100%
+  border-radius: 1000px
+  background-image: url("/img/me.png")
+  background-size: contain
+  background-repeat: no-repeat
+  background-position: center
+
+.section
+  background-color: transparent
+  padding: 40px 20px
+  &.thin
+    padding: 0px 20px
 
 .container
   max-width: 800px
@@ -11,7 +53,7 @@ $family-sans-serif: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hira
 
 .content
   font-size: 16px
-  line-height: 1.75
+
 
 .media-content
   .subtitle+.title
@@ -22,29 +64,13 @@ $family-sans-serif: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hira
 .hero .nav
   box-shadow: none
 
-html
-  background-color: transparent
-
-.section
-  padding: 40px 20px
-
-.nav .level-item
-  margin-left: 10px
-
-nav .level
-  padding-top: 14px
-  padding-bot: 6px
+.title
+  line-height: 1.25
+  font-size: 2em
+  margin-right: 10px
 
 .subtitle
   color: #69707a
-
-.title
-  line-height: 1.25
-  font-size: 24px
-  a
-    color: #222324
-  &.notfound
-    font-size: 20vw
 
 code
   color: inherit
@@ -52,28 +78,22 @@ code
   font-size: 90%
 
 article
+  background-color: white
   box-shadow: 1px 1px 5px rgb(125,125,125)
+  border-radius: 3px
   padding: 20px
 
+  a:hover
+    text-decoration: underline
+
 article+article
-  margin-top: 80px
+  margin-top: 40px
 
 .content
   h1, h2, h3, h4, h5, h6
     line-height: 1.25
-    &:not(:first-child)
-      margin-top: 80px
-    &::before
-      color: #aeb1b5
-      font-weight: bold
     code
       background-color: #f8f8f8
-  h1+h2:not(:first-child),
-  h2+h3:not(:first-child),
-  h3+h4:not(:first-child),
-  h4+h5:not(:first-child),
-  h5+h6:not(:first-child)
-    margin-top: 20px
   ol,
   ul,
   pre,
@@ -103,3 +123,10 @@ article+article
     pre,
     table
       margin-bottom: 1.5em
+
+// overrides:
+.has-text-left
+  justify-content: flex-start;
+
+.level-right
+  margin-top: 0px !important

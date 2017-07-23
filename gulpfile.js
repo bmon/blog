@@ -9,6 +9,15 @@ gulp.task("default", function () {
     .pipe(gulp.dest('static/css/'));
 });
 
+gulp.task("dev", function () {
+  gulp.watch('sass/style.sass', function() {
+    gulp.src('sass/style.sass')
+      .pipe(sass())
+      .pipe(autoprefixer())
+      .pipe(gulp.dest('static/css/'));
+  });
+});
+
 gulp.task("watch", function () {
   gulp.watch('sass/style.sass', function() {
     gulp.src('sass/style.sass')
