@@ -1,9 +1,13 @@
 ---
 author: "Brendan Roy"
 date: 2017-07-23
-title: About
-weight: -100
-menu: "main"
+hidedate: true
+title: About Me
+slug: "about"
+menu:
+    main:
+        name: "About"
+        weight: -100
 ---
 
 Hi, I'm Brendan. I'm an Australian software engineer with a background in
