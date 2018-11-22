@@ -7,13 +7,13 @@ tags: ["go", "docker", "web"]
 ---
 
 I've been building a lot of webhooks lately, and more often than not, I need serve my applications over HTTPS.
-A common way of quickly achieving this is by utilsing [Let's Encrypt](https://letsencrypt.org/), however it can be a bit fiddly to setup. I'd really like to be able to automate the process entirely, including certificate renewal.
+A common way of quickly achieving this is by utilising [Let's Encrypt](https://letsencrypt.org/), however it can be a bit fiddly to setup. I'd really like to be able to automate the process entirely, including certificate renewal.
 I've been building my applications using docker, and I'd like to keep the build process and container images as lightweight as possible.
 Lastly, I'd like to have the entire process as application code, so I can easily change and re-deploy things on the fly. Also, having no ops/shell scripts allows my applications to be portable and easily deployed to many different environments.
 
 Fortunately, there is a way to achieve all of these things, using Go. It all starts with the [acme/autocert](https://godoc.org/golang.org/x/crypto/acme/autocert) package. For the unaware, ACME stands for _Automated Certificate Management Environment_, a protocol which allows for low cost and automated TLS certificate generation and verification.
 
-Let's Encrypt utilises ACME to provide free domain-validated certficates to anybody who can verify that they control the domain they're requesting to be certified.
+Let's Encrypt utilises ACME to provide free domain-validated certificates to anybody who can verify that they control the domain they're requesting to be certified.
 One way to verify is for an application to request a secret token from Let's Encrypt (over a secure connection), and then Let's Encrypt will make a HTTP request to the domain name being verified.
 If the application can serve the secret token back to Let's Encrypt, it's verified that is has control of the domain, and Let's Encrypt will sign a certificate for use on the domain.
 
@@ -24,7 +24,7 @@ For this example, I will be hosting my application at `kappa.serv.brendanr.net` 
 
 Next, you'll need a server which you can deploy your application to. Make sure to configure your DNS server to point your domain(s) to your server.
 
-Last you'll need to make use of that [acme/autocert](https://godoc.org/golang.org/x/crypto/acme/autocert) package I mentioned earlier to request and respond to ACME challenges. There is a great [sample implmentation](https://github.com/kjk/go-cookbook/blob/master/free-ssl-certificates/main.go) written by [Krzysztof Kowalczyk](https://blog.kowalczyk.info/) which you should check out, but I'm going to show you a cut down verstion to better explain how it works.
+Last you'll need to make use of that [acme/autocert](https://godoc.org/golang.org/x/crypto/acme/autocert) package I mentioned earlier to request and respond to ACME challenges. There is a great [sample implementation](https://github.com/kjk/go-cookbook/blob/master/free-ssl-certificates/main.go) written by [Krzysztof Kowalczyk](https://blog.kowalczyk.info/) which you should check out, but I'm going to show you a cut down version to better explain how it works.
 
 ## Our Application
 
@@ -73,7 +73,7 @@ certManager := autocert.Manager{
 }
 ```
 This block is setting up some configuration for ACME. `Prompt: autocert.AcceptTOS` specifies that you accept the Let's Encrypt [Terms of Service](https://letsencrypt.org/repository/). The `Cache` field specifies if, and how, the autocert package should cache certificates. Let's Encrypt has [rate limits](https://letsencrypt.org/docs/rate-limits/) which limit how often you can request a certificate, so it's important to store certificates somewhere you can retrieve them later. Here we are specifying that the certificates should be stored in the `cert-cache` directory.
-Lastly, the `HostPolicy` allows us to whitelist which domains we wish to request certificates for. Without this setting it's possible for attackers to expend your rate limit allocation and possibly stop you from generating the certificates you need, so it is important.
+Lastly, the `HostPolicy` allows us to whitelist which domains we wish to request certificates for. Without this setting it's possible for attackers to exhaust your rate limit allocation and possibly stop you from generating the certificates you need, so it is important.
 
 
 ```go
@@ -153,10 +153,10 @@ Here's what you need to pay attention to:
 
 - __You have to install ca-certificates on the final image__, even if your application isn't making TLS requests. This is because all requests your application will make to Let's Encrypt will be HTTPS requests, so you'll need the root certificates.
 - __You have to expose port 80__, even if you're not going to serve anything over HTTP. This is because the ACME challenge we are using is the HTTP challenge, which means Let's Encrypt needs to be able to make a HTTP connection to our application.
-- __You should use a volume for your cache dir__, so your certificates are stored, even between deployments. If you don't do this you will likely hit Let's Encrypt ratelimits.
+- __You should use a volume for your cache dir__, so your certificates are stored, even between deployments. If you don't do this you will likely hit Let's Encrypt rate limits.
 
-# Wrapup
+## Wrapup
 
-I hope this article helps save you some time and headscratching when setting up your next web service, or at the very least makes you interested in writing a little more Go ;)
+I hope this article helps save you some time and head scratching when setting up your next web service, or at the very least makes you interested in writing a little more Go ;)
 
 The full code is available at https://github.com/bmon/go-web-base
