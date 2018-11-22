@@ -37,8 +37,8 @@ name = "Home"
 weight = -110
 identifier = "home"
 url = "/"
-[[menu.main]]
-name = "Resume"
-weight = -90
-identifier = "resume"
-url = "/doc/resume.pdf"
+#[[menu.main]]
+#name = "Resume"
+#weight = -90
+#identifier = "resume"
+#url = "/doc/resume.pdf"

@@ -76,7 +76,6 @@ nav.navbar
 code
   color: inherit
   background-color: transparent
-  font-size: 90%
 
 article
   background-color: white
@@ -86,6 +85,15 @@ article
 
   a:hover
     text-decoration: underline
+
+  .article-date-tags, .article-date-tags .level-left
+    flex-grow: 1
+
+  .tags
+    a::after
+      content: ',\a0'
+    a:last-child::after
+      content: ''
 
 article+article
   margin-top: 40px
@@ -108,7 +116,6 @@ article+article
       padding: 8px 10px
       vertical-align: top
   & > code, p > code
-    font-size: 90%
     padding: 2px 4px
     margin: 0 2px
     border: 1px solid #ddd
@@ -117,7 +124,6 @@ article+article
     color: #42464c
   pre
     code
-      font-size: 90%
       padding: 1em
       line-height: 1.5
   li
@@ -127,7 +133,12 @@ article+article
 
 // overrides:
 .has-text-left
-  justify-content: flex-start;
+  justify-content: flex-start
 
+.level
+  flex-wrap: wrap
+.level-left, .level-right
+  flex-wrap: wrap
+  max-width: 100%
 .level-right
   margin-top: 0px !important
