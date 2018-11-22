@@ -86,6 +86,15 @@ article
   a:hover
     text-decoration: underline
 
+  .article-date-tags, .article-date-tags .level-left
+    flex-grow: 1
+
+  .tags
+    a::after
+      content: ',\a0'
+    a:last-child::after
+      content: ''
+
 article+article
   margin-top: 40px
 
