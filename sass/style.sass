@@ -76,7 +76,6 @@ nav.navbar
 code
   color: inherit
   background-color: transparent
-  font-size: 90%
 
 article
   background-color: white
@@ -127,7 +126,12 @@ article+article
 
 // overrides:
 .has-text-left
-  justify-content: flex-start;
+  justify-content: flex-start
 
+.level
+  flex-wrap: wrap
+.level-left, .level-right
+  flex-wrap: wrap
+  max-width: 100%
 .level-right
   margin-top: 0px !important
