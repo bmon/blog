@@ -98,7 +98,7 @@ Build and deploy your application, and make a https request to it! It should tak
 
 ## You promised me Docker
 
-There's a couple of gotchas you'll need to dodge when containerizing this application.  the full dockerfile. I am making use of modules, and this dockerfile is a modified version of Pierre Prinetti's wonderful [Go 1.11 web service Dockerfile](https://medium.com/@pierreprinetti/the-go-1-11-dockerfile-a3218319d191)
+There's a couple of gotchas you'll need to dodge when containerizing this application. Here's the full dockerfile. I am making use of modules, and this dockerfile is a modified version of Pierre Prinetti's wonderful [Go 1.11 web service Dockerfile](https://medium.com/@pierreprinetti/the-go-1-11-dockerfile-a3218319d191).
 
 ```dockerfile
 # Accept the Go version for the image to be set as a build argument.
@@ -151,8 +151,8 @@ The dockerfile works in two stages, builder and final. This allows us to ship an
 
 Here's what you need to pay attention to:
 
-- __You have to install ca-certificates on the final image__, even if your application isn't making TLS requests. This is because all requests your application will make to Let's Encrypt will be HTTPS requests, so you'll need the root certificates.
-- __You have to expose port 80__, even if you're not going to serve anything over HTTP. This is because the ACME challenge we are using is the HTTP challenge, which means Let's Encrypt needs to be able to make a HTTP connection to our application.
+- __You have to install ca-certificates on the final image__, even if your application isn't making TLS connections. This is because all requests your application will make to Let's Encrypt will be HTTPS requests, so you'll need the root certificates.
+- __You have to expose port 80__, even if you're not going to serve anything over HTTP. This is because the ACME challenge we are using is the HTTP challenge, which means Let's Encrypt needs to be able to make a HTTP request to our application.
 - __You should use a volume for your cache dir__, so your certificates are stored, even between deployments. If you don't do this you will likely hit Let's Encrypt rate limits.
 
 ## Wrapup
