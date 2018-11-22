@@ -1,7 +1,7 @@
 ---
 author: "Brendan Roy"
 date: 2018-11-22
-title: Free and Automatic HTTPS with Docker and Go
+title: Automagical HTTPS with Docker and Go
 weight: 10
 tags: ["go", "docker", "web"]
 ---
